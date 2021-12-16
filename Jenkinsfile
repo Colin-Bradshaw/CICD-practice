@@ -9,7 +9,6 @@ pipeline {
                 }
             }
         }
-     }
     post {
        always {
           junit(
