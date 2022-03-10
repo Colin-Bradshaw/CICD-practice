@@ -9,22 +9,15 @@ pipeline {
     stages {
         stage('build and scan') { 
             steps {
-                // booking
-                dir ('CICD-practice'){
-                    withSonarQubeEnv('SonarQubeScanner'){
-                        sh 'mvn verify sonar:sonar -Dsonar.host.url=http://jenkins.hitec.link:9000/ -Dsonar.login=dbe54ee91fab45705e2a7ccbdb2a3ef0587cad48'
-                    }
-                    sh 'mvn clean install > maven-build.txt'
+                withSonarQubeEnv('SonarQubeScanner'){
+                    sh 'mvn verify sonar:sonar -Dsonar.host.url=http://jenkins.hitec.link:9000/ -Dsonar.login=dbe54ee91fab45705e2a7ccbdb2a3ef0587cad48'
                 }
+                sh 'mvn clean install > maven-build.txt'
             }
         }
         stage('dockerize') { 
             steps {
-                // booking
-                dir ('CICD-practice'){
-                    sh 'docker build -t "jenkins-auto-build-booking:latest" .'
-                }
-                
+                sh 'docker build -t "jenkins-auto-build-booking:latest" .'
             }
         }
         stage('push to ecr') { 
