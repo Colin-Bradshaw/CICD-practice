@@ -5,7 +5,7 @@ pipeline {
         UTOPIA_DB_UNAME = credentials("CB-DB-USER")
         UTOPIA_DB_PASS = credentials("CB_DB_PASS")
         AWS_CLI = '/usr/local/bin/aws'
-        PLACEHOLDER = ''
+        PLACEHOLDER = ' '
     }
     stages {
         stage('build and scan') { 
