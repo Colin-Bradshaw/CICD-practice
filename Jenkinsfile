@@ -11,7 +11,7 @@ pipeline {
         stage('build and scan') { 
             steps {
                 withSonarQubeEnv('SonarQubeScanner'){
-                    sh 'mvn verify sonar:sonar -Dsonar.host.url=http://jenkins.hitec.link:9000/ -Dsonar.login=dbe54ee91fab45705e2a7ccbdb2a3ef0587cad48'
+                    sh 'mvn verify sonar:sonar -Dsonar.host.url=http://jenkins.hitec.link:9000/ -Dsonar.login=3b4c1716c02efa3ef2d3c1e2d483ffbb714c024c'
                 }
                 sh 'mvn clean install > maven-build.txt'
             }
